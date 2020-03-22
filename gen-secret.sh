@@ -2,7 +2,7 @@
 set -e
 
 regex="docker login -u (.+) -p (.+) -e (.+) (.+)"
-if [[ $(aws ecr get-login --no-include-email --region ${REGION}) =~ $regex ]]
+if [[ $(aws ecr get-login --region ${REGION}) =~ $regex ]]
 then
   login=$(echo "${BASH_REMATCH[1]}:${BASH_REMATCH[2]}" | base64)
   echo "Configuring registry ${BASH_REMATCH[4]:8}..."
