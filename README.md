@@ -11,7 +11,7 @@ Requirements:
 Run:
 ```
 export REGION="ap-southeast-1"
-curl -LSs https://raw.githubusercontent.com/divergent-thinking/ecr-k8s-secret/master/gen-secret.sh | sed 's|base64|base64 -w 0|g' |bash -
+curl -LSs https://raw.githubusercontent.com/divergent-thinking/ecr-k8s-secret/master/gen-secret.sh |bash -
 ```
 
 This will automatically create a secret called `aws-ecr-credentials` that you can use on your Pod definition:
