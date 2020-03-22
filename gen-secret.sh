@@ -8,7 +8,7 @@ then
   echo "Configuring registry ${BASH_REMATCH[4]:8}..."
   dockerconfig="{\"auths\":{\"${BASH_REMATCH[4]:8}\":{\"auth\": \"${login}\"}}}"
   dockerconfigjson=$(echo ${dockerconfig} | base64 -w 0)
-  secret="apiVersion: v1\nkind: Secret\nmetadata:\n  name: aws-ecr-credentials\ndata:\n  .dockerconfigjson: ${dockerconfigjson}\ntype: kubernetes.io/dockerconfigjson"
+  secret="apiVersion: v1\nkind: Secret\nmetadata:\n  name: aws-ecr-credentials\n  namespace: ${NAMESPACE}\ndata:\n  .dockerconfigjson: ${dockerconfigjson}\ntype: kubernetes.io/dockerconfigjson"
   echo -e ${secret} | kubectl replace -f - --force
   cat <<EOF
 
