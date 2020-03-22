@@ -11,6 +11,7 @@ Requirements:
 Run:
 ```
 export REGION="ap-southeast-1"
+export NAMESPACE="default"
 curl -LSs https://raw.githubusercontent.com/divergent-thinking/ecr-k8s-secret/master/gen-secret.sh |bash -
 ```
 
